@@ -16,7 +16,7 @@ const authAdmin = (req, res, next) => {
         }else{
             return res.status(401).send({
                 status: 'Error',
-                message: 'Unauthorized User Roll'
+                message: 'Unauthorized User Role'
             })
         }
     } catch (error) {
