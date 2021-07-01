@@ -55,3 +55,5 @@ router.route('')
         //Obtener toda la info de ciudades
 
     })
+
+module.exports = router;
