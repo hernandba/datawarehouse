@@ -20,6 +20,10 @@ app.use(expressJWT({ secret: ADMINKEY, algorithms: ['HS256'] }).unless({ path: [
 const login = require('./routes/login')
 app.use('/login', login)
 
+/* ------------------------------ ROUTE /users ------------------------------ */
+const users = require('./routes/users')
+app.use('/users', users)
+
 /* ---------------------------------- ERROR --------------------------------- */
 //Endpoint not found error
 app.use((req, res) => {
@@ -31,7 +35,7 @@ app.use((req, res) => {
   
   // Generic Error (MUST BE LAST)
   app.use((err, req, res, next) => {
-    if (err) res.status(err.status).send({status: 'Error', message: err});
+    if (err) res.status(500).send({status: 'Error', message: 'Unexpected Error'});
     // next();
   });
   
