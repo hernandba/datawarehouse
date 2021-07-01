@@ -24,6 +24,10 @@ app.use('/login', login)
 const users = require('./routes/users')
 app.use('/users', users)
 
+/* ---------------------------- ROUTE /locations ---------------------------- */
+const locations = require('./routes/locations')
+app.use('/locations', locations)
+
 /* ---------------------------------- ERROR --------------------------------- */
 //Endpoint not found error
 app.use((req, res) => {
