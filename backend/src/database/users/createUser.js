@@ -3,7 +3,7 @@ const sequelize = require('../connection');
 async function createUser(newUserData){
     try {
         let result = await sequelize.query(
-            'INSERT INTO Users VALUES (NULL, :name, :lastname, :email, :profile_id, :password)',
+            'INSERT INTO Users VALUES (NULL, :name, :lastname, :email, (SELECT id FROM Profiles WHERE profile = :profile), :password)',
             {
                 replacements: newUserData,
                 type: sequelize.QueryTypes.INSERT
