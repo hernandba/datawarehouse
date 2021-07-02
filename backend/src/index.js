@@ -28,6 +28,10 @@ app.use('/users', users)
 const locations = require('./routes/locations')
 app.use('/locations', locations)
 
+/* ---------------------------- ROUTE /companies ---------------------------- */
+const companies = require('./routes/companies')
+app.use('/companies', companies)
+
 /* ---------------------------------- ERROR --------------------------------- */
 //Endpoint not found error
 app.use((req, res) => {
