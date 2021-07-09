@@ -68,18 +68,19 @@ router.route('/:section')
         //ALL
         console.log('aqui')
         const { section } = req.params;
-        const { newName, oldValue, location } = req.body;
+        const { name } = req.query;
+        const { newName, location } = req.body;
         
-        updateSection(section, newName, oldValue, location).then(sectionUpdated => {
+        updateSection(section, name, newName, location).then(sectionUpdated => {
             
             res.status(200).send(
                 {
                     status: 'OK',
-                    message: `New ${section} created`,
+                    message: `${section} updated`,
                     data: {
                         id: sectionUpdated,
+                        name: name,
                         newName: newName,
-                        oldValue: oldValue,
                         location: location
                     }
                 }
@@ -90,7 +91,7 @@ router.route('/:section')
     .delete((req, res) => {
         //ALL
         const { section } = req.params;
-        const { name } = req.body;
+        const { name } = req.query;
         deleteSection(section, name).then(result => {
             res.status(200).send(
                 {
