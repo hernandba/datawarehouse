@@ -1,59 +1,108 @@
 /* -------------------------------------------------------------------------- */
 /*                              ROUTE /locations                              */
 /* -------------------------------------------------------------------------- */
-const express = require('express')
+const express = require('express');
 const router = express.Router();
+
+const getAllLocations = require('../database/locations/getAllLocations');
+const getAllFromSection = require('../database/locations/getAllFromSection');
+const createNewSection = require('../database/locations/createNewSection');
+const updateSection = require('../database/locations/updateSection');
+const deleteSection = require('../database/locations/deleteSection');
+
+const validateSection = require('../validations/locations/validateSection');
 
 // /locations
 router.route('')
     .get((req, res) => {
         //ALL
-        //Obtener toda la info de lugares (ciudad(es), pais(es), region(es))
-
+        //Get All locations info
+        getAllLocations().then(locations => {
+            res.status(200).send(
+                {
+                    status: 'OK',
+                    message: 'All Locations Info',
+                    data: locations
+                }
+            )
+        })
     })
-    .post((req, res) => {
-        //ALL
-        //Crear nueva region
 
-    })
-
-// /locations/regions
-router.route('/regions')
+// /locations/:section (regions-countries-cities)
+router.use('/:section', validateSection); //Global Validation for section
+router.route('/:section')
     .get((req, res) => {
         //ALL
-        //Obtener toda la info de regiones
+        //Get All *section* info
+        const { section } = req.params;
 
+        getAllFromSection(section).then(sections => {
+            res.status(200).send(
+                {
+                    status: 'OK',
+                    message: `All ${section} info`,
+                    data: sections
+                }
+            )
+        })
     })
     .post((req, res) => {
         //ALL
-        //Crear nueva region
-
+        const { section } = req.params;
+        const { name, location } = req.body;
+        createNewSection(section, name, location).then(newSection => {
+            res.status(200).send(
+                {
+                    status: 'OK',
+                    message: `New ${section} created`,
+                    data: {
+                        id: newSection,
+                        name: name,
+                        location: location
+                    }
+                }
+            )
+        })
     })
     .put((req, res) => {
         //ALL
-        //Crear nueva region
+        console.log('aqui')
+        const { section } = req.params;
+        const { newName, oldValue, location } = req.body;
+        
+        updateSection(section, newName, oldValue, location).then(sectionUpdated => {
+            
+            res.status(200).send(
+                {
+                    status: 'OK',
+                    message: `New ${section} created`,
+                    data: {
+                        id: sectionUpdated,
+                        newName: newName,
+                        oldValue: oldValue,
+                        location: location
+                    }
+                }
+            )
+        })
 
     })
     .delete((req, res) => {
         //ALL
-        //Crear nueva region
-
-    })
-
-// /locations/countries
-router.route('')
-    .get((req, res) => {
-        //ALL
-        //Obtener toda la info de paises
-
-    })
-
-// /locations/cities
-router.route('')
-    .get((req, res) => {
-        //ALL
-        //Obtener toda la info de ciudades
-
+        const { section } = req.params;
+        const { name } = req.body;
+        deleteSection(section, name).then(result => {
+            res.status(200).send(
+                {
+                    status: 'OK',
+                    message: `${section} deleted`,
+                    data: {
+                        id: result,
+                        name: name
+                    }
+                }
+            )
+        })
     })
 
 module.exports = router;
