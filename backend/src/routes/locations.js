@@ -29,7 +29,7 @@ router.route('')
     })
 
 // /locations/:section (regions-countries-cities)
-router.use('/:section', validateSection); //Global Validation for section
+router.use('/:section', validateSection); //Global Validation (Middleware) for /:section
 router.route('/:section')
     .get((req, res) => {
         //ALL
@@ -86,7 +86,6 @@ router.route('/:section')
                 }
             )
         })
-
     })
     .delete((req, res) => {
         //ALL
