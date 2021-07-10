@@ -6,8 +6,11 @@ const router = express.Router()
 
 const getAllCompanies = require('../database/companies/getAllCompanies')
 const createCompany = require('../database/companies/createCompany')
+const deleteCompany = require('../database/companies/deleteCompany')
+const updateCompany = require('../database/companies/updateCompany')
 
 const validateNewCompany = require('../validations/companies/validateNewCompany')
+const validateCompany = require('../validations/companies/validateCompany')
 
 // /companies
 router.route('')
@@ -34,7 +37,6 @@ router.route('')
                     status: 'OK',
                     message: 'New Company Created',
                     data: {
-                        id: result,
                         name: name,
                         address: address,
                         email: email,
@@ -45,15 +47,45 @@ router.route('')
             )
         })
     })
-    .put((req, res) => {
+    .put(validateCompany, (req, res) => {
         //ALL
         //Actualizar info de empresa
+        const { companyName } = req.query;
+        const { name, address, email, phone, city_id} = req.body
 
+        updateCompany(companyName, req.body).then(result => {
+            res.status(200).send(
+                {
+                    status: 'OK',
+                    message: 'Company Updated',
+                    data: {
+                        id: result,
+                        name: name,
+                        address: address,
+                        email: email,
+                        phone: phone,
+                        city: city_id
+                    }
+                }
+            )
+        })
     })
-    .delete((req, res) => {
+    .delete(validateCompany, (req, res) => {
         //ALL
         //Eliminar empresa
-
+        const { companyName } = req.query;
+        deleteCompany(companyName).then(result => {
+            res.status(200).send(
+                {
+                    status: 'OK',
+                    message: `Company deleted`,
+                    data: {
+                        id: result,
+                        name: companyName
+                    }
+                }
+            )
+        })
     })
 
 module.exports = router;
