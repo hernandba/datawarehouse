@@ -30,7 +30,7 @@ router.route('')
                 {
                     status: 'OK',
                     message: 'New Contact Created',
-                    data:{ ...req.body }
+                    data:{ id: result, ...req.body }
                 }
             )
         })
