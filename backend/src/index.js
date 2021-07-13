@@ -32,6 +32,10 @@ app.use('/locations', locations)
 const companies = require('./routes/companies')
 app.use('/companies', companies)
 
+/* ----------------------------- ROUTE /contacts ---------------------------- */
+const contacts = require('./routes/contacts')
+app.use('/contacts', contacts)
+
 /* ---------------------------------- ERROR --------------------------------- */
 //Endpoint not found error
 app.use((req, res) => {
