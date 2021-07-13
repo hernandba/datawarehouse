@@ -1,9 +1,18 @@
 const searchContact = require('../../database/contacts/searchContact');
 
 const validateContact = (req, res, next) => {
-    const { id } = req.query;
-
-    if(!id){
+    const contact_id = Object.values(req.query);
+    // const { id } = req.query;
+    // if(!id){
+    //     return res.status(400).send({
+    //         status: 'error',
+    //         message: 'Contact id has no value',
+    //         data: {
+    //             id: id
+    //         }
+    //     }) 
+    // }
+    if(!contact_id[0]){
         return res.status(400).send({
             status: 'error',
             message: 'Contact id has no value',
@@ -13,7 +22,7 @@ const validateContact = (req, res, next) => {
         }) 
     }
 
-    searchContact({id: id, email: ""}).then(result => {
+    searchContact({id: contact_id[0], email: ""}).then(result => {
         const contactExists = result;
 
         if (!contactExists) {
