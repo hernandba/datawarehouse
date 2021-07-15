@@ -25,7 +25,10 @@ router.route('')
                 {
                     status: 'OK',
                     message: 'Logged in',
-                    token: token
+                    data:{
+                        profile: userInfo.profile,
+                        token: token
+                    }
                 }
             )
         })
