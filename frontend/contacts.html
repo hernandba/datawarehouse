@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datawarehouse</title>
+    <!--Boostrap CSS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <!--Font Awesone-->
+    <script src="https://kit.fontawesome.com/2b29b122bc.js" crossorigin="anonymous"></script>
+    <!--CSS-->
+    <link rel="stylesheet" href="./styles/main.css" type="text/css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #214985;">
+        <a class="navbar-brand" href="#">Datawarehouse</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse " id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./contacts.html">Contactos<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./companies.html">Compañias</a>
+                </li>
+                <div class="nav-item">
+                    <li class="nav-item" id="nav-users">
+                        <a class="nav-link disabled" href="./users.html" id="tab_usuarios">Usuarios</a>
+                    </li>
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="./regions.html">Región/Ciudad</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="spacer">
+
+        <div class="modal fade" id="create-contact-modal" tabindex="-1" role="dialog"
+            aria-labelledby="Create Contact Modal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document" style="min-width: 96%;">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary pt-4 px-4 pb-5">
+                        <h5 class="modal-title title text-white" id="create-contact-modal-title">Nuevo contacto</h5>
+
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                        <div class="contact-maininfo-container bg-white border border-primary rounded">
+                            <form class="">
+                                <div class="row">
+                                    <div class="form-group col-auto">
+                                        <label for="inputName">Nombre<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="inputName">
+                                    </div>
+                                    <div class="form-group col-auto">
+                                        <label for="inputLastname">Apellido<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="inputLastname">
+                                    </div>
+                                    <div class="form-group col-auto">
+                                        <label for="inputRole">Cargo<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="inputRole">
+                                    </div>
+                                    <div class="form-group col-auto">
+                                        <label for="inputEmail"><span class="text-danger">*</span>Email</label>
+                                        <input type="text" class="form-control" id="inputEmail">
+                                    </div>
+                                    <div class="form-group col-auto">
+                                        <label for="inputCompany">Compañía<span class="text-danger">*</span> </label>
+                                        <select id="inputCompany" class="form-control">
+                                            <option selected>Seleccionar compañía</option>
+                                            <option>...</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div class="modal-body pt-5">
+                        <form class="contact-location-interest">
+                            <div class="row">
+                                <div class="form-group col-md-2">
+                                    <label for="inputRegion">Region</label>
+                                    <select id="inputRegion" class="form-control">
+                                        <option selected>Seleccionar región</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputPais">País</label>
+                                    <select id="inputPais" class="form-control">
+                                        <option selected>Seleccionar país</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputCity">Ciudad</label>
+                                    <select id="inputCity" class="form-control">
+                                        <option selected>Seleccionar ciudad</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputAddress">Dirección</label>
+                                    <input type="text" class="form-control" placeholder="Ingresa una dirección"
+                                        id="inputAddress">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="inputInterest">Interés</label>
+                                    <input type="range" min="0" max="100" step="25" autocomplete="off"
+                                        class="form-control-range" id="inputInterest">
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <br>
+                                    <select id="inputInterest" class="form-control">
+                                        <option selected>0%</option>
+                                        <option>25%</option>
+                                        <option>50%</option>
+                                        <option>75%</option>
+                                        <option>100%</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+
+                        <form class="contact-channel-init">
+                            <div class="row">
+                                <div class="form-group col-md-2">
+                                    <label for="inputChanel">Canal de Contacto</label>
+                                    <select id="inputChannel" class="form-control">
+                                        <option selected>Seleccionar canal</option>
+                                        <option>Whatsapp</option>
+                                        <option>Facebook</option>
+                                        <option>Twitter</option>
+                                        <option>Instagram</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputUserChannel">Cuenta de Usuario</label>
+                                    <input type="text" class="form-control" placeholder="@ejemplo"
+                                        id="inputUserChannel">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputChannelPreference">Preferencias</label>
+                                    <select id="inputChannelPreference" class="form-control">
+                                        <option selected>Sin preferencia</option>
+                                        <option>Canal favorito</option>
+                                        <option>No molestar</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <br>
+                                    <button type="button" class="btn btn-primary mt-2">Agregar canal</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <form class="contact-channel-add">
+                            <div class="row">
+                                <div class="form-group col-md-2">
+                                    <select id="inputChannel1" class="form-control">
+                                        <option selected>Seleccionar canal</option>
+                                        <option>Whatsapp</option>
+                                        <option>Facebook</option>
+                                        <option>Twitter</option>
+                                        <option>Instagram</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <input type="text" class="form-control" placeholder="@ejemplo"
+                                        id="inputUserChannel">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <select id="inputChannelPreference1" class="form-control">
+                                        <option selected>Sin preferencia</option>
+                                        <option>Canal favorito</option>
+                                        <option>No molestar</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <button type="button" class="btn btn-outline-primary"><i class="fas fa-pen"></i>
+                                        Editar canal</button>
+                                    <button type="button" class="btn btn-outline-secondary"><i class="fas fa-trash"></i>
+                                        Eliminar canal</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer pt-5">
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-secondary">Guardar Contacto</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <header>
+            <h3 class="title mb-2">Contactos</h3>
+
+            <form class="">
+                <div class="row justify-content-between">
+                    <div class="form-group input-group col-sm-5">
+                        <input id="inputSearch" type="text" class="form-control" aria-label="Text input with dropdown button">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                            <div class="dropdown-menu dropdown-menu-right col-sm-10 px-4 py-4">
+                                <form class="px-4 py-5">
+                                    <div class="form-group row">
+                                        <label for="inputSearchName" class="col-sm-5 col-form-label">Nombre del contacto</label>
+                                        <div class="col-sm-7">
+                                          <input type="text" class="form-control" id="inputSearchName">
+                                        </div>
+                                      </div>
+                                    <div class="form-group row">
+                                        <label for="inputSearchRole" class="col-sm-5 col-form-label">Cargo</label>
+                                        <div class="col-sm-7">
+                                          <input type="text" class="form-control" id="inputSearchRole">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputSearchRegion" class="col-sm-5 col-form-label">País/Región</label>
+                                        <div class="col-sm-7">
+                                            <select id="inputSearchRegion" class="form-control">
+                                                <option selected>Todos</option>
+                                                <option>...</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputSearchCompany" class="col-sm-5 col-form-label">Compañía</label>
+                                        <div class="col-sm-7">
+                                            <select id="inputSearchCompany" class="form-control">
+                                                <option selected>Todas</option>
+                                                <option>...</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputSearchChannelFav" class="col-sm-5 col-form-label">Canal Favorito</label>
+                                        <div class="col-sm-7">
+                                            <select id="inputSearchChannelFav" class="form-control">
+                                                <option selected>Cualquiera</option>
+                                                <option>...</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputSearchInterest" class="col-sm-5 col-form-label">Interés</label>
+                                        <div class="col-sm-7">
+                                            <select id="inputSearchInterest" class="form-control">
+                                                <option selected>Cualquiera</option>
+                                                <option>0%</option>
+                                                <option>25%</option>
+                                                <option>50%</option>
+                                                <option>75%</option>
+                                                <option>100%</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <button id="btnSearchContact" type="button" class="btn btn-outline-secondary ml-2"><i class="fas fa-search"></i></button>
+                    </div>
+
+                    <div class="form-group col-md-2">
+                        <button id="btnAddContact" type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#create-contact-modal">Agregar contacto</button>
+                    </div>
+                </div>
+            </form>
+        </header>
+
+    </div>
+
+    <!-- ------------------------------- jquery -------------------------------- -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <!-- ---------------------------- Bootstrap js ----------------------------- -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

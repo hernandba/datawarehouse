@@ -1,0 +1,288 @@
+@import 'base/main_base';
+@import 'contacts/main_contacts';
+
+
+.displaynone {
+    display: none;
+}
+
+.displayblock {
+    display: block;
+}
+
+.title {
+    font-family: $font2;
+}
+
+.titleCompany {
+    padding-top: 30px;
+    font-family: $font2;
+    text-align: center;
+}
+
+.buscar {
+    background-color: $color2;
+    color: $color1
+}
+
+.btn-outline-secondary {
+    border-color: $color3;
+}
+
+.subirarchivo {
+    border-color: $color1;
+}
+
+.bnAgregar {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+
+}
+
+.inputSearch {
+    width: 210px;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: $color4;
+    background-color: $color2;
+    background-clip: padding-box;
+    border: 1px solid $color5;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.modal2 {
+    display: flex;
+    flex-direction: column;
+    background-color: $color1;
+    height: 140px;
+    color: $color2;
+}
+
+
+.modal3 {
+    display: flex;
+
+}
+
+.modal4 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.modal5 {
+    display: flex;
+    margin-left: 72px;
+}
+
+.contenedor {
+    border: 3px solid $color6;
+    z-index: 1;
+    position: relative;
+    margin-top: -100px;
+    margin-left: 5px;
+    height: 131px;
+    display: flex;
+}
+
+.agregarMas {
+    padding-top: 35px;
+    padding-left: 25px;
+    width: fit-content;
+    margin-left: 75px;
+}
+
+.agregarMas {
+    padding-top: 35px;
+    padding-left: 25px;
+}
+
+.datos {
+    display: flex;
+    justify-content: space-between;
+}
+
+.labelBody {
+    margin-right: 16px;
+    font-family: $font2;
+}
+
+.moverBody {
+    padding-top: 0px;
+}
+
+.colorInput {
+    background-color: $color7;
+}
+
+.colorInput2 {
+    background-color: $color7;
+    color: $color2;
+}
+
+.colorInput3 {
+    background-color: $color2;
+    color: $color7;
+}
+
+.usuario {
+    display: flex;
+}
+
+.cambiosPerfil {
+    margin-left: 17px;
+}
+
+.campoRegion {
+    padding-left: 30px;
+    padding-right: 37px;
+    margin-right: 26px;
+}
+
+.formulario__grupo-input {
+    position: relative;
+}
+
+.formulario__input-error {
+    font-size: 12px;
+    margin-bottom: 0;
+    display: none;
+}
+
+.formulario__input-error-activo {
+    display: block;
+}
+
+.formulario__validacion-estado {
+    position: absolute;
+    right: 23px;
+    bottom: 32px;
+    top: 10px;
+    z-index: 100;
+    opacity: 0;
+    font-size: 16px;
+}
+
+.formulario__grupo-correcto .formulario__validacion-estado {
+    color: $color8;
+    opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__validacion-estado {
+    color: $color9;
+    opacity: 1;
+}
+
+.formulario__grupo-incorrecto .formulario__input {
+    border: 3px solid $color9;
+    opacity: 1;
+}
+
+.formulario__mensaje {
+    height: 35px;
+    line-height: 35px;
+    background: $color10;
+    padding: 0 15px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    display: none;
+}
+
+.formulario__mensaje-activo {
+    display: block;
+}
+
+.formulario__mensaje p {
+    margin: 0;
+}
+
+.formulario__mensaje-exito {
+    text-align: center;
+    font-size: 14px;
+    background: $color11;
+    color: $color12;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 15px;
+    border-radius: 3px;
+    margin-top: 10px;
+    display: none;
+}
+
+
+
+.formulario__mensaje-exito-activo {
+    display: block;
+}
+
+.seccionCompanias {
+    margin-left: 1px;
+}
+
+.selectRegion {
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: $color4;
+    background-color: $color2;
+    background-clip: padding-box;
+    border: 1px solid $color5;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btnAgregarRegion {
+    display: block;
+    margin: auto;
+}
+
+.otraRegion {
+    margin: auto;
+}
+
+.nuevoBtn {
+    display: flex;
+    justify-content: space-around;
+}
+
+table thead {
+    background-color: $color1;
+    color: $color2;
+}
+
+.regionLabel {
+    text-align: center;
+}
+
+.inputRegion {
+    margin-left: 70px;
+}
+
+.regionCrear {
+    margin-left: 100px;
+}
+
+.paisCrear {
+    margin-left: 35px;
+}
+
+.ciudadCrear {
+    margin-left: 78px;
+}
+
+.btnEliminarContacto {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.selected {
+    background-color: rgb(179, 205, 230) !important
+}
+
+.navItemUsuarios {
+    display: none;
+}
