@@ -1,0 +1,22 @@
+.table-general {
+    .contact-interest{
+        display: flex;
+        align-items: center;
+        margin-right: -100px;
+
+        .contact-interest-holder{
+            width: 200px;
+            height: 12px;
+            margin-left: 20px;
+            border-radius: 10px;
+            background-color: lightgrey;
+
+            .contact-interest-ruler{
+                width: 50px;
+                height: 12px;
+                border-radius: 10px;
+                background-color: red;
+            }
+        }
+    }
+}

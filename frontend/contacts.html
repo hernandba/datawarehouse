@@ -36,11 +36,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="./companies.html">Compañias</a>
                 </li>
-                <div class="nav-item">
-                    <li class="nav-item" id="nav-users">
-                        <a class="nav-link disabled" href="./users.html" id="tab_usuarios">Usuarios</a>
-                    </li>
-                </div>
+                <li class="nav-item" id="nav-users">
+                    <a class="nav-link" href="./users.html">Usuarios</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./regions.html">Región/Ciudad</a>
                 </li>
@@ -218,26 +216,29 @@
             <form class="">
                 <div class="row justify-content-between">
                     <div class="form-group input-group col-sm-5">
-                        <input id="inputSearch" type="text" class="form-control" aria-label="Text input with dropdown button">
+                        <input id="inputSearch" type="text" class="form-control"
+                            aria-label="Text input with dropdown button">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                             <div class="dropdown-menu dropdown-menu-right col-sm-10 px-4 py-4">
                                 <form class="px-4 py-5">
                                     <div class="form-group row">
-                                        <label for="inputSearchName" class="col-sm-5 col-form-label">Nombre del contacto</label>
+                                        <label for="inputSearchName" class="col-sm-5 col-form-label">Nombre del
+                                            contacto</label>
                                         <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="inputSearchName">
-                                        </div>
-                                      </div>
-                                    <div class="form-group row">
-                                        <label for="inputSearchRole" class="col-sm-5 col-form-label">Cargo</label>
-                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" id="inputSearchRole">
+                                            <input type="text" class="form-control" id="inputSearchName">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="inputSearchRegion" class="col-sm-5 col-form-label">País/Región</label>
+                                        <label for="inputSearchRole" class="col-sm-5 col-form-label">Cargo</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" id="inputSearchRole">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputSearchRegion"
+                                            class="col-sm-5 col-form-label">País/Región</label>
                                         <div class="col-sm-7">
                                             <select id="inputSearchRegion" class="form-control">
                                                 <option selected>Todos</option>
@@ -255,7 +256,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="inputSearchChannelFav" class="col-sm-5 col-form-label">Canal Favorito</label>
+                                        <label for="inputSearchChannelFav" class="col-sm-5 col-form-label">Canal
+                                            Favorito</label>
                                         <div class="col-sm-7">
                                             <select id="inputSearchChannelFav" class="form-control">
                                                 <option selected>Cualquiera</option>
@@ -279,7 +281,8 @@
                                 </form>
                             </div>
                         </div>
-                        <button id="btnSearchContact" type="button" class="btn btn-outline-secondary ml-2"><i class="fas fa-search"></i></button>
+                        <button id="btnSearchContact" type="button" class="btn btn-outline-secondary ml-2"><i
+                                class="fas fa-search"></i></button>
                     </div>
 
                     <div class="form-group col-md-2">
@@ -289,6 +292,59 @@
                 </div>
             </form>
         </header>
+
+        <table class="table-general table-contacts table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col"><input class="" type="checkbox" value="" id="check-allContacts"></th>
+                    <th scope="col">Contacto <i class="fas fa-sort"></i></th>
+                    <th scope="col">País/Región <i class="fas fa-sort"></i></th>
+                    <th scope="col">Compañía <i class="fas fa-sort"></i></th>
+                    <th scope="col">Cargo <i class="fas fa-sort"></i></th>
+                    <th scope="col">Interés <i class="fas fa-sort"></i></th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="contact-info">
+                    <th scope="row">
+                        <input class="contact-check" type="checkbox" value="" id="">
+                    </th>
+                    <td class="contact-name">
+                        <span class="contact-fullname">Camila Soledad Pantó</span>
+                        <br>
+                        <span class="contact-email field-subinfo">camilapanto123@gmail.com</span>
+                    </td>
+                    <td class="contact-location">
+                        <span class="contact-country">Argentina</span>
+                        <br>
+                        <span class="contact-region field-subinfo">Latam</span>
+                    </td>
+                    <td class="contact-company">Ecom Experts</td>
+                    <td class="contact-role">UX Designer</td>
+                    <td class="contact-interest">
+                        <span class="contact-interest-number">100%</span>
+                        <div class="contact-interest-holder">
+                            <div class="contact-interest-ruler"></div>
+                        </div>
+                    </td>
+                    <td class="field-actions">
+                        <div class="field-actions-container">
+                            <button class="field-actions-display icon-button">
+                                <i class="fas fa-ellipsis-h fa-lg"></i>
+                            </button>
+                            <div class="field-actions-buttons">
+                                <button class="field-erase icon-button"><i class="fas fa-trash fa-lg"></i></button>
+                                <button class="field-edit icon-button" data-toggle="modal"
+                                    data-target="#create-contact-modal">
+                                    <i class="fas fa-pen fa-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
     </div>
 

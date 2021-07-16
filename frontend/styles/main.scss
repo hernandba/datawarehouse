@@ -1,5 +1,6 @@
 @import 'base/main_base';
 @import 'contacts/main_contacts';
+@import 'users/main_users';
 
 
 .displaynone {
@@ -12,17 +13,6 @@
 
 .title {
     font-family: $font2;
-}
-
-.titleCompany {
-    padding-top: 30px;
-    font-family: $font2;
-    text-align: center;
-}
-
-.buscar {
-    background-color: $color2;
-    color: $color1
 }
 
 .btn-outline-secondary {

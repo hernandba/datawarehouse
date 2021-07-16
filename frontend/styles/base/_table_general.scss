@@ -1,0 +1,20 @@
+.table-general {
+    .field-subinfo {
+        color: lightgray;
+        font-size: small;
+    }
+
+    .field-actions{
+        .field-actions-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;            
+
+            .field-actions-buttons{
+                display: flex;
+                width: 100px;
+                justify-content: space-around;
+            }
+        }
+    }
+}

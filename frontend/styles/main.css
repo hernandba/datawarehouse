@@ -1,3 +1,38 @@
+.icon-button {
+  border: none;
+  background-color: transparent;
+}
+
+.table-general .field-subinfo {
+  color: lightgray;
+  font-size: small;
+}
+
+.table-general .field-actions .field-actions-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.table-general .field-actions .field-actions-container .field-actions-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+header {
+  margin-bottom: 70px;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -35,6 +70,40 @@ body {
   padding: 0 20px;
 }
 
+.table-general .contact-interest {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: -100px;
+}
+
+.table-general .contact-interest .contact-interest-holder {
+  width: 200px;
+  height: 12px;
+  margin-left: 20px;
+  border-radius: 10px;
+  background-color: lightgrey;
+}
+
+.table-general .contact-interest .contact-interest-holder .contact-interest-ruler {
+  width: 50px;
+  height: 12px;
+  border-radius: 10px;
+  background-color: red;
+}
+
+.header-users {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .displaynone {
   display: none;
 }
@@ -45,17 +114,6 @@ body {
 
 .title {
   font-family: "Open sans bold", sans-serif;
-}
-
-.titleCompany {
-  padding-top: 30px;
-  font-family: "Open sans bold", sans-serif;
-  text-align: center;
-}
-
-.buscar {
-  background-color: white;
-  color: #214985;
 }
 
 .btn-outline-secondary {
