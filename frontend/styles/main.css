@@ -33,6 +33,15 @@ header {
   margin-bottom: 70px;
 }
 
+.header-oneline {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -93,15 +102,6 @@ body {
   height: 12px;
   border-radius: 10px;
   background-color: red;
-}
-
-.header-users {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 .displaynone {
