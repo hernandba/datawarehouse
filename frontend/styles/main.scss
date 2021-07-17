@@ -1,15 +1,8 @@
 @import 'base/main_base';
 @import 'contacts/main_contacts';
 @import 'users/main_users';
+@import 'locations/main_locations';
 
-
-.displaynone {
-    display: none;
-}
-
-.displayblock {
-    display: block;
-}
 
 .title {
     font-family: $font2;
