@@ -10,7 +10,7 @@ btnLogin.addEventListener('click', (event) => {
             password: passInput.value
         }
         // console.log(reqBody);
-        apiCall(`${baseApiUrl}/login`, 'POST', reqBody).then(response => {
+        apiCall(`${baseApiUrl}/login`, 'POST', '', reqBody).then(response => {
             // console.log(response)
             if(response.status !== 'OK'){
                 alert('Usuario o contraseña incorrectos')
