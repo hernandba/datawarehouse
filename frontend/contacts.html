@@ -305,8 +305,8 @@
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr class="contact-info">
+            <tbody id="contacts-entries-container">
+                <tr class="contact-entry d-none">
                     <th scope="row">
                         <input class="contact-check" type="checkbox" value="" id="">
                     </th>
@@ -333,7 +333,7 @@
                             <button class="field-actions-display icon-button">
                                 <i class="fas fa-ellipsis-h fa-lg"></i>
                             </button>
-                            <div class="field-actions-buttons">
+                            <div class="field-actions-buttons d-none">
                                 <button class="field-erase icon-button"><i class="fas fa-trash fa-lg"></i></button>
                                 <button class="field-edit icon-button" data-toggle="modal"
                                     data-target="#create-contact-modal">
@@ -359,6 +359,7 @@
     <!-- ------------------------------- Scripts ------------------------------- -->
     <script src="./scripts/apiCall.js"></script>
     <script src="./scripts/validateCredential.js"></script>
+    <script src="./scripts/contacts/createContactsEntries.js"></script>
     <script src="./scripts/contacts/contacts.js"></script>
 </body>
 

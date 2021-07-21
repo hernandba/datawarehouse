@@ -1,21 +1,24 @@
 const sessionCredentials = JSON.parse(sessionStorage.getItem('sessionCredentials'));
 let userProfile, userToken;
+
 const navUsersLink = document.querySelector('#nav-users');
-    //CHECK: Habilitar seccion usuarios si es admin
-    //TODO: cargar todos los contactos
-    //TODO:Acciones contactos:
-    //- Crear contacto:
-    //-- Ingresar informacion
-    //-- Guardarlo
-    //-- Cargar nuevamente todos (que incluira el nuevo)
-    //- Desplegar informacion de contacto en modal
-    //- Buscar cualquiera, buscar con filtro
-    //- 
+
+let contactEntry = document.querySelector('.contact-entry');
+let contactsEntriesContainer = document.querySelector('#contacts-entries-container');
 
 if(validateCredential()){
     userProfile = sessionCredentials.profile;
+    userToken = sessionCredentials.token;
+    
+    /* ---------------------------- Link de usuarios ---------------------------- */
     if(userProfile !== 'admin'){
         navUsersLink.classList.add('d-none')
     }
+
+    /* ------------------------------ read contacts ----------------------------- */
+    apiCall(`${baseApiUrl}/contacts`, 'GET', userToken).then(response => {
+        createContactsEntries(response.data, contactsEntriesContainer, contactEntry)
+
+    }).catch(error => console.error(error))
 }
 
