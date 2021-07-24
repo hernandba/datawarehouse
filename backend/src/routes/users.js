@@ -13,7 +13,7 @@ const deleteUsers = require('../database/users/deleteUsers');
 const validateNewUser = require('../validations/users/validateNewUser')
 
 const authAdmin = require('../auth/authAdmin');
-const validateUser = require('../validations/users/validateUser');
+// const validateUser = require('../validations/users/validateUser');
 
 // /users
 router.route('')
@@ -50,7 +50,7 @@ router.route('')
             )
         })
     })
-    .put(validateUser ,(req, res) => {
+    .put((req, res) => {
         const { id } = req.query;
         updateUser(id, req.body).then(result => {
             res.status(200).send(
