@@ -3,8 +3,8 @@ let userProfile, userToken;
 
 const navUsersLink = document.querySelector('#nav-users');
 
-let contactEntry = document.querySelector('.contact-entry');
-let contactsEntriesContainer = document.querySelector('#contacts-entries-container');
+let contactRecord = document.querySelector('.contact-record');
+let contactsRecordsContainer = document.querySelector('#contacts-records-container');
 
 if(validateCredential()){
     userProfile = sessionCredentials.profile;
@@ -15,9 +15,13 @@ if(validateCredential()){
         navUsersLink.classList.add('d-none')
     }
 
-    /* ------------------------------ read contacts ----------------------------- */
+    /* ----------------------------- CREATE contacts ---------------------------- */
+
+
+    /* ------------------------------ READ contacts ----------------------------- */
+    //LOAD contacts to table
     apiCall(`${baseApiUrl}/contacts`, 'GET', userToken).then(response => {
-        createContactsEntries(response.data, contactsEntriesContainer, contactEntry)
+        loadContactsRecords(response.data, contactsRecordsContainer, contactRecord)
 
     }).catch(error => console.error(error))
 }
