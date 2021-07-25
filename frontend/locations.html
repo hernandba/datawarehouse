@@ -85,54 +85,60 @@
                 data-target="#create-location-modal">Agregar región</button>
         </header>
 
-        <ul id="allLocations">
-            <li class="region p-2">
+        <li class="region-record p-2 d-none">
+            <span class="caret region-name">Sudamérica</span>
+            <button type="button" class="btn btn-primary ml-5" data-toggle="modal" data-target="#create-location-modal">Agregar país</button>
+            <ul class="nested mt-3 region-childs">
+
+            </ul>
+        </li>
+
+        <li class="country-record p-2 d-none">
+            <span class="caret country-name">Argentina</span>
+            <button type="button" class="btn btn-outline-primary ml-2"><i class="fas fa-pen fa-lg"></i></button>
+            <button type="button" class="btn btn-outline-primary ml-2"><i class="fas fa-trash fa-lg"></i></button>
+            <button type="button" class="btn btn-primary ml-5" data-toggle="modal"
+            data-target="#create-location-modal">Agregar ciudad</button>
+            <ul class="nested mt-3 country-childs">
+
+            </ul>
+        </li>
+
+        <li class="city-record p-2 d-none">
+            <span class="city-name">Buenos Aires</span>
+            <button type="button" class="btn btn-outline-primary ml-2"><i
+                    class="fas fa-pen fa-lg"></i></button>
+            <button type="button" class="btn btn-outline-primary ml-2"><i
+                    class="fas fa-trash fa-lg"></i></button>
+        </li>
+
+        <!-- <ul id="allLocations">
+            <li class="region-record p-2">
                 <span class="caret region-name">Sudamérica</span>
-                <button type="button" class="btn btn-primary ml-5">Agregar país</button>
-                <ul class="nested mt-3">
-                    <li class="country p-2">
+                <button type="button" class="btn btn-primary ml-5" data-toggle="modal" data-target="#create-location-modal">Agregar país</button>
+                <ul class="nested mt-3 region-childs">
+
+                    <li class="country-record p-2">
                         <span class="caret country-name">Argentina</span>
                         <button type="button" class="btn btn-outline-primary ml-2"><i class="fas fa-pen fa-lg"></i></button>
                         <button type="button" class="btn btn-outline-primary ml-2"><i class="fas fa-trash fa-lg"></i></button>
                         <button type="button" class="btn btn-primary ml-5">Agregar ciudad</button>
-                        <ul class="nested mt-3">
-                            <li class="city p-2">
+                        <ul class="nested mt-3 country-childs">
+
+                            <li class="city-record p-2">
                                 <span class="">Buenos Aires</span>
                                 <button type="button" class="btn btn-outline-primary ml-2"><i
                                         class="fas fa-pen fa-lg"></i></button>
                                 <button type="button" class="btn btn-outline-primary ml-2"><i
                                         class="fas fa-trash fa-lg"></i></button>
                             </li>
-                            <li class="city p-2">
-                                <span class="">Córdoba</span>
-                                <button type="button" class="btn btn-outline-primary ml-2"><i
-                                    class="fas fa-pen fa-lg"></i></button>
-                            <button type="button" class="btn btn-outline-primary ml-2"><i
-                                    class="fas fa-trash fa-lg"></i></button>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="country p-2">
-                        <span class="caret">Colombia</span>
-                        <ul class="nested">
-                            <li class="city p-2">Bogotá</li>
-                            <li class="city p-2">Medellín</li>
+
                         </ul>
                     </li>
                 </ul>
             </li>
-            <li class="region p-2">
-                <span class="caret">Norteamérica</span>
-                <ul class="nested">
-                    <li class="country p-2">
-                        <span class="caret">México</span>
-                        <ul class="nested">
-                            <li class="city p-2">Ciudad de México</li>
-                            <li class="city p-2">Tijuana</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+        </ul> -->
+        <ul id="allLocations">
         </ul>
 
     </div>
@@ -146,7 +152,11 @@
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous">
     </script>
     <!-- ----------------------------- /locations ------------------------------ -->
+    <script src="./scripts/apiCall.js"></script>
+    <script src="./scripts/validateCredential.js"></script>
     <script src="./scripts/locations/locationsTree.js"></script>
+    <script src="./scripts/locations/loadRegionsRecords.js"></script>
+    <script src="./scripts/locations/locations_main.js"></script>
 </body>
 
 </html>
