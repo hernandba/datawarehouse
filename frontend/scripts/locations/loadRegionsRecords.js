@@ -6,6 +6,7 @@ function loadRegionsRecords(data, recordsContainer, recordTemplate){
         newRegionRecord.setAttribute('class', 'region-record p-2');
         newRegionRecord.innerHTML = recordTemplate.innerHTML;
 
+        newRegionRecord.querySelector('.region-id').innerText = id;
         newRegionRecord.querySelector('.region-name').innerText = name;
 
         recordsContainer.appendChild(newRegionRecord);
