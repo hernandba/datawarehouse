@@ -11,6 +11,7 @@ const updateSection = require('../database/locations/updateSection');
 const deleteSection = require('../database/locations/deleteSection');
 
 const validateSection = require('../validations/locations/validateSection');
+const validateNewSection = require('../validations/locations/validateNewSection');
 
 // /locations
 router.route('')
@@ -46,7 +47,7 @@ router.route('/:section')
             )
         })
     })
-    .post((req, res) => {
+    .post(validateNewSection, (req, res) => {
         //ALL
         const { section } = req.params;
         const { name, location } = req.body;
@@ -66,12 +67,11 @@ router.route('/:section')
     })
     .put((req, res) => {
         //ALL
-        console.log('aqui')
         const { section } = req.params;
-        const { name } = req.query;
-        const { newName, location } = req.body;
+        const { id } = req.query;
+        const { newName } = req.body;
         
-        updateSection(section, name, newName, location).then(sectionUpdated => {
+        updateSection(section, id, newName).then(sectionUpdated => {
             
             res.status(200).send(
                 {
@@ -79,9 +79,7 @@ router.route('/:section')
                     message: `${section} updated`,
                     data: {
                         id: sectionUpdated,
-                        name: name,
                         newName: newName,
-                        location: location
                     }
                 }
             )
