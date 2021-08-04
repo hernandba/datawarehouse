@@ -218,7 +218,7 @@
                     <div class="form-group input-group col-sm-5">
                         <input id="inputSearch" type="text" class="form-control"
                             aria-label="Text input with dropdown button">
-                        <div class="input-group-append">
+                        <div class="input-group-append d-none">
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                             <div class="dropdown-menu dropdown-menu-right col-sm-10 px-4 py-4">
@@ -286,6 +286,10 @@
                     </div>
 
                     <div class="form-group col-md-2">
+                        <button id="btnDeleteContactsSelected" type="button" class="btn btn-primary d-none">Eliminar contacto(s)</button>
+                    </div>
+
+                    <div class="form-group col-md-2">
                         <button id="btnAddContact" type="button" class="btn btn-primary" data-toggle="modal"
                             data-target="#create-contact-modal">Agregar contacto</button>
                     </div>
@@ -296,7 +300,7 @@
         <table class="table-general table-contacts table table-hover">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col"><input class="" type="checkbox" value="" id="check-allContacts"></th>
+                    <th scope="col"><input class="" type="checkbox" value="" id="checkAllContacts"></th>
                     <th scope="col">Contacto <i class="fas fa-sort"></i></th>
                     <th scope="col">País/Región <i class="fas fa-sort"></i></th>
                     <th scope="col">Compañía <i class="fas fa-sort"></i></th>
@@ -308,7 +312,7 @@
             <tbody id="contacts-records-container">
                 <tr class="contact-record d-none">
                     <th scope="row">
-                        <input class="contact-check" type="checkbox" value="" id="">
+                        <input class="contact-check" type="checkbox" value="0" id="">
                     </th>
                     <td class="contact-name">
                         <span class="contact-fullname">Camila Soledad Pantó</span>
