@@ -14,7 +14,9 @@ const validateNewContact = require('../validations/contacts/validateNewContact')
 
 router.route('')
     .get((req, res) => {
-        getAllContacts().then(result => {
+        const { search } = req.query;
+        console.log(search)
+        getAllContacts(search).then(result => {
             res.status(200).send(
                 {
                     status: 'OK',

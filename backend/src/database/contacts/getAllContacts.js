@@ -1,9 +1,13 @@
 const sequelize = require('../connection');
 
-async function getAllContacts(){
+async function getAllContacts(search){
+    let query = search ? `SELECT con.id, con.name, con.lastname, con.email, ci.name city, coun.name country, reg.name region, com.name company, con.role, con.interested FROM Contacts con JOIN Companies com ON con.company_id = com.id JOIN Cities ci ON con.city_id = ci.id JOIN Countries coun ON ci.country_id = coun.id JOIN Regions reg ON coun.region_id = reg.id WHERE con.name LIKE '%${search}%' OR con.lastname LIKE '%${search}%' OR con.email LIKE '%${search}%' OR ci.name LIKE '%${search}%' OR coun.name LIKE '%${search}%' OR reg.name LIKE '%${search}%' OR com.name LIKE '%${search}%' OR con.role LIKE '%${search}%' OR con.interested LIKE '%${search}%'`
+    :
+    'SELECT con.id, con.name, con.lastname, con.email, ci.name city, coun.name country, reg.name region, com.name company, con.role, con.interested FROM Contacts con JOIN Companies com ON con.company_id = com.id JOIN Cities ci ON con.city_id = ci.id JOIN Countries coun ON ci.country_id = coun.id JOIN Regions reg ON coun.region_id = reg.id ORDER BY id'
+
     try {
         let result = await sequelize.query(
-            'SELECT con.id, con.name, con.lastname, con.email, ci.name city, coun.name country, reg.name region, com.name company, con.role, con.interested FROM Contacts con JOIN Companies com ON con.company_id = com.id JOIN Cities ci ON con.city_id = ci.id JOIN Countries coun ON ci.country_id = coun.id JOIN Regions reg ON coun.region_id = reg.id ORDER BY id',
+            query,
             {
                 type: sequelize.QueryTypes.SELECT
             }
