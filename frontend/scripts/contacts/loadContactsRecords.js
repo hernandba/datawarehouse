@@ -13,9 +13,26 @@ function loadContactsRecords(data, entriesContainer, recordTemplate){
         newContactRecord.querySelector('.contact-region').innerText = region;
         newContactRecord.querySelector('.contact-company').innerText = company;
         newContactRecord.querySelector('.contact-role').innerText = role;
-        newContactRecord.querySelector('.contact-interest-number').innerText = interested+'%';
 
+        newContactRecord.querySelector('.contact-interest-number').innerText = interested+'%';
         newContactRecord.querySelector('.contact-interest-ruler').style.width = interested+'%';
+        switch (interested) {
+            case '25':
+                newContactRecord.querySelector('.contact-interest-ruler').classList.add('bg-danger')
+                break;
+            case '50':
+                newContactRecord.querySelector('.contact-interest-ruler').classList.add('bg-warning')
+                break;
+            case '75':
+                newContactRecord.querySelector('.contact-interest-ruler').classList.add('bg-info')
+                break;
+            case '100':
+                newContactRecord.querySelector('.contact-interest-ruler').classList.add('bg-success')
+                break;
+        
+            default:
+                break;
+        }
 
         let contactCheck = newContactRecord.querySelector('.contact-check');
 
@@ -24,16 +41,20 @@ function loadContactsRecords(data, entriesContainer, recordTemplate){
                 contactsSelected++;
                 contactsToDelete.push(contactCheck.value);
                 btnDeleteContactsSelected.classList.remove('d-none')
-                console.log('contactsToDelete: '+contactsToDelete);
-                console.log('contactsSelected: '+contactsSelected);
+                contactsSelectedCounter.classList.remove('d-none')
+                contactsSelectedCounter.innerText = contactsSelected+' seleccionados';
+                // console.log('contactsToDelete: '+contactsToDelete);
+                // console.log('contactsSelected: '+contactsSelected);
             }else{
                 contactsSelected--;
                 contactsToDelete.splice(contactsToDelete.indexOf(contactCheck.value),1)
+                contactsSelectedCounter.innerText = contactsSelected+' seleccionados';
                 if(contactsSelected == 0){
                     btnDeleteContactsSelected.classList.add('d-none')
+                    contactsSelectedCounter.classList.add('d-none')
                 }
-                console.log('contactsToDelete: '+contactsToDelete);
-                console.log('contactsSelected: '+contactsSelected);
+                // console.log('contactsToDelete: '+contactsToDelete);
+                // console.log('contactsSelected: '+contactsSelected);
             }
         })
 

@@ -12,8 +12,11 @@ let btnSearchContact = document.querySelector('#btnSearchContact');
 let btnDeleteContactsSelected = document.querySelector('#btnDeleteContactsSelected')
 let checkAllContacts = document.querySelector('#checkAllContacts');
 
+let modal = document.querySelector('.modal')
+
 let contactsSelected = 0;
 let contactsToDelete = [];
+let contactsSelectedCounter = document.querySelector('#contactsSelectedCounter');
 
 if (validateCredential()) {
     userProfile = sessionCredentials.profile;
@@ -74,19 +77,17 @@ if (validateCredential()) {
                 contactsSelected = document.querySelectorAll('.contact-check').length;
 
                 btnDeleteContactsSelected.classList.remove('d-none')
-
-                console.log('contactsToDelete: '+contactsToDelete);
-                console.log('contactsSelected: '+contactsSelected);
+                contactsSelectedCounter.classList.remove('d-none')
+                contactsSelectedCounter.innerText = contactsSelected+' seleccionados';
             })
         }else{
             contactsToDelete = [];
             document.querySelectorAll('.contact-check').forEach(contactCheck => {
                 contactCheck.checked = false;
                 contactsSelected = 0;
-                console.log('contactsToDelete: '+contactsToDelete);
-                console.log('contactsSelected: '+contactsSelected);
-
                 btnDeleteContactsSelected.classList.add('d-none')
+                contactsSelectedCounter.classList.add('d-none')
+                contactsSelectedCounter.innerText = '';
             })
         }
     })
