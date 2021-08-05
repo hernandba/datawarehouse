@@ -13,6 +13,7 @@ let btnDeleteContactsSelected = document.querySelector('#btnDeleteContactsSelect
 let checkAllContacts = document.querySelector('#checkAllContacts');
 
 let modal = document.querySelector('.modal')
+let contactChannelsContainer = modal.querySelector('#contact-channels-container');
 
 let contactsSelected = 0;
 let contactsToDelete = [];
@@ -65,6 +66,8 @@ if (validateCredential()) {
     })
 
     /* ----------------------------- CREATE contacts ---------------------------- */
+    /* ---------------------------- Channels on Modal --------------------------- */
+    modalController(modal);
 
     /* ----------------------------- DELETE contacts ---------------------------- */
     //CHECK (SELECT-UNSELECT) all contacts
