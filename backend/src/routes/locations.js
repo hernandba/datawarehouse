@@ -19,13 +19,11 @@ router.route('')
         //ALL
         //Get All locations info
         getAllLocations().then(locations => {
-            res.status(200).send(
-                {
-                    status: 'OK',
-                    message: 'All Locations Info',
-                    data: locations
-                }
-            )
+            res.status(200).send({
+                status: 'OK',
+                message: 'All Locations Info',
+                data: locations
+            })
         })
     })
 
@@ -37,7 +35,7 @@ router.route('/:section')
         //Get All *section* info
         const { section } = req.params;
 
-        getAllFromSection(section).then(sections => {
+        getAllFromSection(section, req.query).then(sections => {
             res.status(200).send(
                 {
                     status: 'OK',
@@ -49,57 +47,66 @@ router.route('/:section')
     })
     .post(validateNewSection, (req, res) => {
         //ALL
-        const { section } = req.params;
-        const { name, location } = req.body;
+        const {
+            section
+        } = req.params;
+        const {
+            name,
+            location
+        } = req.body;
         createNewSection(section, name, location).then(newSection => {
-            res.status(200).send(
-                {
-                    status: 'OK',
-                    message: `New ${section} created`,
-                    data: {
-                        id: newSection,
-                        name: name,
-                        location: location
-                    }
+            res.status(200).send({
+                status: 'OK',
+                message: `New ${section} created`,
+                data: {
+                    id: newSection,
+                    name: name,
+                    location: location
                 }
-            )
+            })
         })
     })
     .put((req, res) => {
         //ALL
-        const { section } = req.params;
-        const { id } = req.query;
-        const { newName } = req.body;
-        
+        const {
+            section
+        } = req.params;
+        const {
+            id
+        } = req.query;
+        const {
+            newName
+        } = req.body;
+
         updateSection(section, id, newName).then(sectionUpdated => {
-            
-            res.status(200).send(
-                {
-                    status: 'OK',
-                    message: `${section} updated`,
-                    data: {
-                        id: sectionUpdated,
-                        newName: newName,
-                    }
+
+            res.status(200).send({
+                status: 'OK',
+                message: `${section} updated`,
+                data: {
+                    id: sectionUpdated,
+                    newName: newName,
                 }
-            )
+            })
         })
     })
     .delete((req, res) => {
         //ALL
-        const { section } = req.params;
-        const { name } = req.query;
+        const {
+            section
+        } = req.params;
+        const {
+            name
+        } = req.query;
         deleteSection(section, name).then(result => {
-            res.status(200).send(
-                {
-                    status: 'OK',
-                    message: `${section} deleted`,
-                    data: {
-                        id: result,
-                        name: name
-                    }
+            res.status(200).send({
+                status: 'OK',
+                message: `${section} deleted`,
+                data: {
+                    id: result,
+                    name: name
                 }
-            )
+            })
         })
     })
 

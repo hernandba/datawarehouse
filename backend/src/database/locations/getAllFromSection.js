@@ -1,9 +1,15 @@
 const sequelize = require('../connection');
 
-async function getAllFromSection(section){
+async function getAllFromSection(section, parent_id){
+    // let query = Object.keys(parent_id).length === 0 ? `SELECT * FROM ${section}` : `SELECT * FROM ${section} WHERE ${Object.keys(parent_id)[0]} = ${Object.values(parent_id)[0]}`
+    if(Object.keys(parent_id).length === 0){
+        query = `SELECT * FROM ${section}`;
+    }else{
+        query = `SELECT * FROM ${section} WHERE ${Object.keys(parent_id)[0]} = ${Object.values(parent_id)[0]}`;
+    }
     try {
         let result = await sequelize.query(
-            `SELECT * FROM ${section}`,
+            query,
             {   
                 type: sequelize.QueryTypes.SELECT
             }
