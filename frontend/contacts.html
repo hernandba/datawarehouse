@@ -118,63 +118,67 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputInterest">Interés</label>
-                                    <input type="range" min="0" max="100" step="25" autocomplete="off"
-                                        class="form-control-range" id="inputInterest">
+                                    <input type="range" min="0" max="100" step="25" autocomplete="on"
+                                        class="form-control-range" id="inputInterestRange">
                                 </div>
                                 <div class="form-group col-md-1">
                                     <br>
                                     <select id="inputInterest" class="form-control">
-                                        <option selected>0%</option>
-                                        <option>25%</option>
-                                        <option>50%</option>
-                                        <option>75%</option>
-                                        <option>100%</option>
+                                        <option selected value="0">0%</option>
+                                        <option value="25">25%</option>
+                                        <option value="50">50%</option>
+                                        <option value="75">75%</option>
+                                        <option value="100">100%</option>
                                     </select>
                                 </div>
                             </div>
                         </form>
 
+
+                        <div class="row ml-4">
+                            <label class="mr-5" for="inputChanel">Canal de Contacto</label>
+                            <label class="ml-5 mr-5 pl-3" for="inputUserChannel">Cuenta de Usuario</label>
+                            <label class="ml-5 pl-3" for="inputChannelPreference">Preferencias</label>
+                        </div>
                         <div id="contact-channels-container">
                             <form class="contact-channel contact-channel-init">
                                 <div class="row">
                                     <div class="form-group col-md-2">
-                                        <label for="inputChanel">Canal de Contacto</label>
                                         <select id="inputChannel" class="form-control">
-                                            <option selected>Seleccionar canal</option>
-                                            <option>Whatsapp</option>
-                                            <option>Facebook</option>
-                                            <option>Twitter</option>
-                                            <option>Instagram</option>
+                                            <option value="0" selected>Seleccionar canal</option>
+                                            <option value="1">Whatsapp</option>
+                                            <option value="2">Facebook</option>
+                                            <option value="3">Instagram</option>
+                                            <option value="4">Twitter</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label for="inputUserChannel">Cuenta de Usuario</label>
                                         <input type="text" class="form-control" placeholder="@ejemplo"
                                             id="inputUserChannel">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label for="inputChannelPreference">Preferencias</label>
                                         <select id="inputChannelPreference" class="form-control">
-                                            <option selected>Sin preferencia</option>
-                                            <option>Canal favorito</option>
-                                            <option>No molestar</option>
+                                            <option value="0" selected>Seleccionar preferencia</option>
+                                            <option value="1">Sin preferencia</option>
+                                            <option value="2">Canal favorito</option>
+                                            <option value="3">No molestar</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <br>
-                                        <button id="btnAddChannel" type="button" class="btn btn-primary mt-2">Agregar canal</button>
+                                        <button id="btnAddChannel" type="button" class="btn btn-primary">Agregar canal</button>
                                     </div>
                                 </div>
                             </form>
                             <form class="contact-channel contact-channel-add d-none">
                                 <div class="row">
+                                    <span class="contactChannelId d-none" value=""></span>
                                     <div class="form-group col-md-2">
-                                        <select id="inputChannel1" class="form-control">
-                                            <option selected>Seleccionar canal</option>
-                                            <option>Whatsapp</option>
-                                            <option>Facebook</option>
-                                            <option>Twitter</option>
-                                            <option>Instagram</option>
+                                        <select id="inputChannel" class="form-control">
+                                            <option value="0" selected>Seleccionar canal</option>
+                                            <option value="1">Whatsapp</option>
+                                            <option value="2">Facebook</option>
+                                            <option value="3">Instagram</option>
+                                            <option value="4">Twitter</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-2">
@@ -182,10 +186,11 @@
                                             id="inputUserChannel">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <select id="inputChannelPreference1" class="form-control">
-                                            <option selected>Sin preferencia</option>
-                                            <option>Canal favorito</option>
-                                            <option>No molestar</option>
+                                        <select id="inputChannelPreference" class="form-control">
+                                            <option value="0" selected>Seleccionar preferencia</option>
+                                            <option value="1">Sin preferencia</option>
+                                            <option value="2">Canal favorito</option>
+                                            <option value="3">No molestar</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4">
@@ -201,7 +206,8 @@
 
                     <div class="modal-footer pt-5">
                         <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-secondary">Guardar Contacto</button>
+                        <button id="btnSaveNewContact" type="button" class="btn btn-secondary">Guardar Contacto</button>
+                        <button id="btnUpdateContact" type="button" class="btn btn-secondary">Actualizar Contacto</button>
                     </div>
                 </div>
             </div>
@@ -361,7 +367,10 @@
     <script src="./scripts/apiCall.js"></script>
     <script src="./scripts/validateCredential.js"></script>
     <script src="./scripts/contacts/loadContactsRecords.js"></script>
+    <script src="./scripts/contacts/createContactChannel.js"></script>
     <script src="./scripts/contacts/modalController.js"></script>
+    <script src="./scripts/contacts/validateEmpyModalInputs.js"></script>
+    <script src="./scripts/contacts/createNewContact.js"></script>
     <script src="./scripts/contacts/contacts_main.js"></script>
 </body>
 

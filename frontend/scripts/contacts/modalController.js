@@ -44,25 +44,19 @@ function modalController(modal) {
         }
     })
 
+    //INTEREST % Range and Input equality functions
+    modal.querySelector('#inputInterestRange').addEventListener('mouseup', event => {
+        modal.querySelector('#inputInterest').value = modal.querySelector('#inputInterestRange').value
+    })
+    modal.querySelector('#inputInterest').addEventListener('mouseup', event => {
+        modal.querySelector('#inputInterestRange').value = modal.querySelector('#inputInterest').value
+    })
+
     //ADD CHANNEL Btn
     let btnAddChannel = modal.querySelector('#btnAddChannel')
     btnAddChannel.addEventListener('click', event => {
-        contactChannelsContainer.appendChild(createContactChannel(modal))
+        contactChannelsContainer.appendChild(createContactChannel(modal, false))
     })
-}
-
-function createContactChannel(modal) {
-    let contactChannelAdd = modal.querySelector('.contact-channel-add')
-    let newContactChannel = document.createElement('form');
-    newContactChannel.setAttribute('class', 'contact-channel contact-channel-add');
-    newContactChannel.innerHTML = contactChannelAdd.innerHTML;
-
-    //ERASE CHANNEL Btn
-    newContactChannel.querySelector('.erase-channel-btn').addEventListener('click', event => {
-        newContactChannel.parentNode.removeChild(newContactChannel);
-    })
-
-    return newContactChannel;
 }
 
 function loadDataToInput(data, container) {

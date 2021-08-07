@@ -19,6 +19,13 @@ let contactsSelected = 0;
 let contactsToDelete = [];
 let contactsSelectedCounter = document.querySelector('#contactsSelectedCounter');
 
+let btnAddContact = document.querySelector('#btnAddContact')
+let btnSaveNewContact = document.querySelector('#btnSaveNewContact');
+let btnUpdateContact = document.querySelector('#btnUpdateContact');
+
+let tempContactChannelAdd = modal.querySelector('.contact-channel-init')
+let tempContactChannelInit = modal.querySelector('.contact-channel-add')
+
 if (validateCredential()) {
     userProfile = sessionCredentials.profile;
     userToken = sessionCredentials.token;
@@ -65,14 +72,39 @@ if (validateCredential()) {
         event.stopPropagation();
     })
 
-    /* ----------------------------- CREATE contacts ---------------------------- */
-    /* ---------------------------- Channels on Modal --------------------------- */
+    /* ----------------------------- MODAL FUNCTIONs ---------------------------- */
     modalController(modal);
+
+    /* ----------------------------- CREATE contacts ---------------------------- */
+    // ADD NEW CONTACT BTN
+    btnAddContact.addEventListener('click', event => {
+        //CLEAN INPUTS
+        modal.querySelector('#inputName').value = '';
+        modal.querySelector('#inputLastname').value = '';
+        modal.querySelector('#inputRole').value = '';
+        modal.querySelector('#inputEmail').value = '';
+        modal.querySelector('#inputAddress').value = '';
+        modal.querySelector('#inputCompany').value = '0';
+        cleanDataInput(modal, '#inputPais', 'Seleccionar país')
+        cleanDataInput(modal, '#inputCity', 'Seleccionar ciudad')
+        modal.querySelector('#inputChannel').value = '0';
+        modal.querySelector('#inputUserChannel').value = '';
+        modal.querySelector('#inputChannelPreference').value = '0';
+
+        modal.querySelector('#contact-channels-container').innerHTML = '';
+        modal.querySelector('#contact-channels-container').appendChild(tempContactChannelAdd)
+        modal.querySelector('#contact-channels-container').appendChild(tempContactChannelInit)
+    })
+    // SAVE NEW CONTACT BTN
+    btnSaveNewContact.addEventListener('click', event => {
+        createNewContact(modal);
+        event.stopPropagation();
+    })
 
     /* ----------------------------- DELETE contacts ---------------------------- */
     //CHECK (SELECT-UNSELECT) all contacts
     checkAllContacts.addEventListener('click', event => {
-        if(checkAllContacts.checked == true){
+        if (checkAllContacts.checked == true) {
             contactsToDelete = [];
             document.querySelectorAll('.contact-check').forEach(contactCheck => {
                 contactCheck.checked = true;
@@ -81,9 +113,9 @@ if (validateCredential()) {
 
                 btnDeleteContactsSelected.classList.remove('d-none')
                 contactsSelectedCounter.classList.remove('d-none')
-                contactsSelectedCounter.innerText = contactsSelected+' seleccionados';
+                contactsSelectedCounter.innerText = contactsSelected + ' seleccionados';
             })
-        }else{
+        } else {
             contactsToDelete = [];
             document.querySelectorAll('.contact-check').forEach(contactCheck => {
                 contactCheck.checked = false;
@@ -96,7 +128,7 @@ if (validateCredential()) {
     })
     //DELETE CONTACTS SELECTED Button
     btnDeleteContactsSelected.addEventListener('click', event => {
-        if(confirm('Esta seguro de que desea eliminar los contactos seleccionado(s)?')){
+        if (confirm('Esta seguro de que desea eliminar los contactos seleccionado(s)?')) {
             apiCall(`${baseApiUrl}/contacts?ids=${contactsToDelete.toString()}`, 'DELETE', userToken).then(response => {
                 alert('Contactos eliminados');
                 location.reload();
@@ -107,6 +139,6 @@ if (validateCredential()) {
     /* ------------------------------ READ contacts ----------------------------- */
     //LOAD contacts to table
     apiCall(`${baseApiUrl}/contacts`, 'GET', userToken).then(response => {
-        loadContactsRecords(response.data, contactsRecordsContainer, contactRecord)
+        loadContactsRecords(response.data, contactsRecordsContainer, contactRecord, modal)
     }).catch(error => console.error(error))
 }

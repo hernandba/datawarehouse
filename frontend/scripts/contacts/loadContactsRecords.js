@@ -1,7 +1,7 @@
-function loadContactsRecords(data, entriesContainer, recordTemplate){
+function loadContactsRecords(data, entriesContainer, recordTemplate, modal){
     data.forEach(contact => {
-        let { id, name, lastname, email, city, country, region, company, role, interested } = contact;
-
+        let { id, name, lastname, email, city_id, city, country_id, country, region_id, region, company_id, company, role, interested, address } = contact;
+        
         let newContactRecord = document.createElement('tr');
         newContactRecord.setAttribute('class', 'contact-record');
         newContactRecord.innerHTML = recordTemplate.innerHTML;
@@ -59,15 +59,16 @@ function loadContactsRecords(data, entriesContainer, recordTemplate){
         })
 
         /* ------------------------------ ACTION BUTTONS ------------------------------ */
+        //DISPLAY of buttons
         let fieldActionsDisplayBtn = newContactRecord.querySelector('.field-actions-display')
         let fieldActionsBtns = newContactRecord.querySelector('.field-actions-buttons')
-        //Click on 3 points to show
+        //SHOW: Click on 3 points
         fieldActionsDisplayBtn.addEventListener('click', event => {
             fieldActionsDisplayBtn.classList.toggle('d-none');
             fieldActionsBtns.classList.toggle('d-none')
             event.stopPropagation();
         })
-        //Mouse out to hide
+        //HIDE: Mouse out
         fieldActionsBtns.addEventListener('mouseout', event => {
             fieldActionsDisplayBtn.classList.toggle('d-none');
             fieldActionsBtns.classList.toggle('d-none')
@@ -85,6 +86,57 @@ function loadContactsRecords(data, entriesContainer, recordTemplate){
                 })
             }
             event.stopPropagation();
+        })
+
+        /* ------------------------------- EDIT BUTTON ------------------------------ */
+        let editBtn = newContactRecord.querySelector('.field-edit');
+        editBtn.addEventListener('click', event => {
+            //LOAD ACTUAL CONTACT DATA TO MODAL
+            //Load basic info
+            modal.querySelector('#inputName').value = name;
+            modal.querySelector('#inputLastname').value = lastname;
+            modal.querySelector('#inputRole').value = role;
+            modal.querySelector('#inputEmail').value = email;
+            modal.querySelector('#inputCompany').value = company_id;
+
+            //Load location info
+            //1.Load region
+            modal.querySelector('#inputRegion').value = region_id;
+            //2.Load country
+            apiCall(`${baseApiUrl}/locations/countries?region_id=${region_id}`, 'GET', userToken).then(response => {
+                loadDataToInput(response.data, modal.querySelector('#inputPais'))
+                modal.querySelector('#inputPais').value = country_id;
+                //3.Load city
+                apiCall(`${baseApiUrl}/locations/cities?country_id=${country_id}`, 'GET', userToken).then(response => {
+                    loadDataToInput(response.data, modal.querySelector('#inputCity'))
+                    modal.querySelector('#inputCity').value = city_id;
+                }).catch(error => console.error(error))
+            }).catch(error => console.error(error))
+
+            //Load interest
+            modal.querySelector('#inputInterest').value = interested;
+            modal.querySelector('#inputInterestRange').value = interested;
+            
+            //Load address
+            modal.querySelector('#inputAddress').value = address;
+
+            //LOAD ACTUAL CONTACT CHANNELS
+            let tempContactChannel = modal.querySelector('.contact-channel-add')
+            modal.querySelector('#contact-channels-container').innerHTML = '';
+            modal.querySelector('#contact-channels-container').appendChild(tempContactChannel)
+
+            apiCall(`${baseApiUrl}/contactsChannels?contact_id=${id}`, 'GET', userToken).then(response => {
+                response.data.channels.forEach(actualContactChannel => {
+                    console.log(actualContactChannel)
+                    let contactChannel = createContactChannel(modal, true, actualContactChannel);
+                    // contactChannel.querySelector('.contactChannelId').innerText = actualContactChannel.id;
+                    // contactChannel.querySelector('#inputChannel').value = actualContactChannel.channel_id;
+                    // contactChannel.querySelector('#inputUserChannel').value = actualContactChannel.username;
+                    // contactChannel.querySelector('#inputChannelPreference').value = actualContactChannel.preference_id;
+
+                    modal.querySelector('#contact-channels-container').appendChild(contactChannel);
+                });
+            }).catch(error => console.error(error))
         })
 
         entriesContainer.appendChild(newContactRecord)
