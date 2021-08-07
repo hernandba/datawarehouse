@@ -17,7 +17,7 @@ const validateContact = (req, res, next) => {
             status: 'error',
             message: 'Contact id has no value',
             data: {
-                id: id
+                id: contact_id[0]
             }
         }) 
     }
@@ -31,7 +31,7 @@ const validateContact = (req, res, next) => {
                 status: 'error',
                 message: 'Contact not found',
                 data: {
-                    id: id
+                    id: contact_id[0]
                 }
             });
         }
