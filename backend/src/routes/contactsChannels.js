@@ -42,25 +42,22 @@ router.route('')
 
     })
     .put(validateContact, (req, res) => {
-        const { contact_id, contact_channel_id } = req.query
+        const { contact_channel_id } = req.query
         updateContactChannelById(contact_channel_id, req.body).then(result => {
             res.status(200).send(
                 {
                     status: 'OK',
                     message: 'Channel Updated For Contact',
                     data:{
-                        contact_id: contact_id,
-                        channel: {
-                            id: contact_channel_id,
-                            ...req.body
-                        } 
+                        id: contact_channel_id,
+                        ...req.body
                     }
                 }
             )
         })
     })
     .delete(validateContact, (req, res) => {
-        const { contact_id, contact_channel_id } = req.query;
+        const { contact_channel_id } = req.query;
         deleteContactChannelById(contact_channel_id).then(result => {
             res.status(200).send(
                 {
