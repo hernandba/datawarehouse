@@ -20,8 +20,8 @@ let contactsToDelete = [];
 let contactsSelectedCounter = document.querySelector('#contactsSelectedCounter');
 
 let btnAddContact = document.querySelector('#btnAddContact')
-let btnSaveNewContact = document.querySelector('#btnSaveNewContact');
-let btnUpdateContact = document.querySelector('#btnUpdateContact');
+let btnSaveNewContact = modal.querySelector('#btnSaveNewContact');
+let btnUpdateContact = modal.querySelector('#btnUpdateContact');
 
 let tempContactChannelAdd = modal.querySelector('.contact-channel-init')
 let tempContactChannelInit = modal.querySelector('.contact-channel-add')
@@ -78,6 +78,10 @@ if (validateCredential()) {
     /* ----------------------------- CREATE contacts ---------------------------- */
     // ADD NEW CONTACT BTN
     btnAddContact.addEventListener('click', event => {
+        //Show save new contact btn
+        btnSaveNewContact.classList.remove('d-none')
+        //Hide update contact btn
+        btnUpdateContact.classList.add('d-none')
         //CLEAN INPUTS
         modal.querySelector('#inputName').value = '';
         modal.querySelector('#inputLastname').value = '';
@@ -98,6 +102,13 @@ if (validateCredential()) {
     // SAVE NEW CONTACT BTN
     btnSaveNewContact.addEventListener('click', event => {
         createNewContact(modal);
+        event.stopPropagation();
+    })
+
+    /* ----------------------------- UPDATE Contact ----------------------------- */
+    //...Previous loaded data
+    btnUpdateContact.addEventListener('click', event => {
+        updateContact(modal);
         event.stopPropagation();
     })
 

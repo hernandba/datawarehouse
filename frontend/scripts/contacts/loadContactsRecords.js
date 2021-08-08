@@ -91,8 +91,15 @@ function loadContactsRecords(data, entriesContainer, recordTemplate, modal){
         /* ------------------------------- EDIT BUTTON ------------------------------ */
         let editBtn = newContactRecord.querySelector('.field-edit');
         editBtn.addEventListener('click', event => {
+
+            //Hide save new contact btn
+            modal.querySelector('#btnSaveNewContact').classList.add('d-none')
+            //Show update contact btn
+            modal.querySelector('#btnUpdateContact').classList.remove('d-none')
+
             //LOAD ACTUAL CONTACT DATA TO MODAL
             //Load basic info
+            modal.querySelector('.contactId').innerText = id;
             modal.querySelector('#inputName').value = name;
             modal.querySelector('#inputLastname').value = lastname;
             modal.querySelector('#inputRole').value = role;
@@ -127,19 +134,13 @@ function loadContactsRecords(data, entriesContainer, recordTemplate, modal){
 
             apiCall(`${baseApiUrl}/contactsChannels?contact_id=${id}`, 'GET', userToken).then(response => {
                 response.data.channels.forEach(actualContactChannel => {
-                    console.log(actualContactChannel)
-                    let contactChannel = createContactChannel(modal, true, actualContactChannel);
-                    // contactChannel.querySelector('.contactChannelId').innerText = actualContactChannel.id;
-                    // contactChannel.querySelector('#inputChannel').value = actualContactChannel.channel_id;
-                    // contactChannel.querySelector('#inputUserChannel').value = actualContactChannel.username;
-                    // contactChannel.querySelector('#inputChannelPreference').value = actualContactChannel.preference_id;
-
+                    // console.log(actualContactChannel)
+                    let contactChannel = createContactChannel(modal, true, actualContactChannel, response.data.contact_id);
                     modal.querySelector('#contact-channels-container').appendChild(contactChannel);
                 });
             }).catch(error => console.error(error))
         })
 
         entriesContainer.appendChild(newContactRecord)
-
-    });
+    })
 }

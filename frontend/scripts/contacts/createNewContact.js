@@ -39,7 +39,6 @@ function createNewContact(modal) {
 
                     }).catch(error => console.error(error))
                 })
-
                 alert('Contacto Creado')
                 location.reload();
             } else {
