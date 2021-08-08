@@ -58,7 +58,7 @@ node ./src/index.js
 
 ## Documentación de la API
 
-[//]: # Abrir el archivo **datawarehouse_Apispec.yml** y copiarlo en **[Swagger](https://editor.swagger.io/)** o importar el mismo desde opciones.
+<!--Abrir el archivo **datawarehouse_Apispec.yml** y copiarlo en **[Swagger](https://editor.swagger.io/)** o importar el mismo desde opciones.--> 
 
 Endpoints:
 
