@@ -58,7 +58,7 @@ node ./src/index.js
 
 ## Documentación de la API
 
-Abrir el archivo **datawarehouse_Apispec.yml** y copiarlo en **[Swagger](https://editor.swagger.io/)** o importar el mismo desde opciones.
+[//]: # Abrir el archivo **datawarehouse_Apispec.yml** y copiarlo en **[Swagger](https://editor.swagger.io/)** o importar el mismo desde opciones.
 
 Endpoints:
 
@@ -69,25 +69,25 @@ Endpoints:
 | POST | /login | Autenticación e inicio de sesión en el sistema | all |
 | GET | /users | Obtiene información de todos los usuarios | all |
 | POST | /users | Crear un nuevo usuario | **admin** |
-| GET | /locations | Obtiene información completa de todos los lugares (ciudad(es)/país(es)/región(es)) | all |
-| GET | /locations/regions | Obtiene información de las regiones disponibles | all |
-| POST | /locations/regions | Crea una nueva región | all |
-| GET | /locations/countries | Obtiene información de los países disponibles | all |
-| POST | /locations/countries | Crea un nuevo país | all |
-| PUT | /locations/countries/{id_country} | Modifica la información de un país con su id | all |
-| DELETE | /locations/countries/{id_country} | Elimina un país con su id | all |
-| GET | /locations/cities | Obtiene información de los países disponibles | all |
-| POST | /locations/cities | Crea un nuevo país | all |
-| PUT | /locations/cities/{id_city} | Modifica la información de una ciudad con su id | all |
-| DELETE | /locations/cities/{id_city} | Elimina una ciudad con su id | all |
-| GET | /companies | Obtiene información de las empresas registradas | all |
+| PUT | /users?{id} | Modifica la información de un usuario con su id | **admin** |
+| GET | /locations | Obtiene información completa de todas las secciones (ciudad(es)/país(es)/región(es)) | all |
+| GET | /locations/:section | Obtiene toda la información de una sección especifica (regions, countries, cities)  | all |
+| GET | /locations/:section?{region_id}{country_id} | Obtiene información de una sección especifica (regions, countries, cities)  | all |
+| POST | /locations/:section | Crea una nueva entrada en la sección específica | all |
+| PUT | /locations/:section/{id} | Modifica la información de una entrada específica con su id | all |
+| DELETE | /locations/:section/{name} | Elimina una entrada especifica con su nombre | all |
+| GET | /companies | Obtiene información de todas las empresas | all |
 | POST | /companies | Crea una nueva empresa | all |
-| PUT | /companies/{id_company} | Modifica la información de una empresa con su id | all |
-| DELETE | /companies/{id_company} | Elimina una empresa con su id | all |
-| GET | /contacts | Obtiene información de todos los contactos registradas | all |
+| PUT | /companies/{name} | Modifica la información de una empresa con su nombre | all |
+| DELETE | /companies/{name} | Elimina una empresa con su nombre | all |
+| GET | /contacts | Obtiene información de todos los contactos registrados | all |
 | POST | /contacts | Crea un nuevo contacto | all |
-| PUT | /contacts/{id_contact} | Modifica la información de un contacto con su id | all |
-| DELETE | /contacts/{id_contact} | Elimina un contacto con su id | all |
+| PUT | /contacts/{id} | Modifica la información de un contacto con su id | all |
+| DELETE | /contacts/[ ids ] | Elimina uno o varios contactos con sus ids | all |
+| GET | /contactsChannels?{contact_id} | Obtiene información de los canales de un contacto con su id | all |
+| POST | /contactsChannels?{contact_id} | Crea un nuevo canal para un contacto con su id | all |
+| PUT | /contactsChannels/{contact_channel_id} | Modifica la información de un canal especifico con su id | all |
+| DELETE | /contactsChannels/{contact_channel_id}  | Elimina un canal especifico con su id | all |
 
 ## Testing
 * **Backend:** Testear endpoints con postman para usar API y base de datos
