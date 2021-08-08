@@ -70,6 +70,7 @@ Endpoints:
 | GET | /users | Obtiene información de todos los usuarios | all |
 | POST | /users | Crear un nuevo usuario | **admin** |
 | PUT | /users?{id} | Modifica la información de un usuario con su id | **admin** |
+| PUT | /users?{id} | Elimina un usuario con su id | **admin** |
 | GET | /locations | Obtiene información completa de todas las secciones (ciudad(es)/país(es)/región(es)) | all |
 | GET | /locations/:section | Obtiene toda la información de una sección especifica (regions, countries, cities)  | all |
 | GET | /locations/:section?{region_id}{country_id} | Obtiene información de una sección especifica (regions, countries, cities)  | all |
