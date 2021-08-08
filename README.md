@@ -97,8 +97,7 @@ Endpoints:
 ## Recursos y tecnologías utilizadas
 * NodeJS
 * Postman
-* XAMPP
-* Swagger
+* MySQL Workbench
 * NPM PACKAGES:
   * express
   * nodemon
